@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS experts;
+
+CREATE TABLE experts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS e_responses;
+
+CREATE TABLE e_responses (
+    expert_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    hair_type
+);
