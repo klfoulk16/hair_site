@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Quiz
+{% endblock %}
+
+{% block main %}
+
+<div class='content-box'>
+    <div class='inner-box'>
+        <h3>How do you currently wash your hair?</h3>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="diy" value="diy">
+            <label class="form-check-label" for="exampleRadios1">
+                I make my own.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="natural-store" value="natural-store">
+            <label class="form-check-label" for="exampleRadios2">
+                I buy natural products from a store.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="synthetic-store" value="synthetic-store">
+            <label class="form-check-label" for="exampleRadios3">
+                I use synthetic products from a store.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="water" value="water">
+            <label class="form-check-label" for="exampleRadios3">
+                I use water.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="nothing" value="nothing">
+            <label class="form-check-label" for="exampleRadios3">
+                I don't wash my hair at all.
+            </label>
+        </div>
+        <button type="submit" class="btn-next btn" id='current-routine-btn'>Next</button>
+    </div>
+</div>
+
+
+{% endblock %}
