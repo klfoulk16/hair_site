@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import sqlite3
 
 # Configure application
@@ -39,7 +39,26 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/quiz')
+@app.route('/name', methods=["GET", "POST"])
 def quiz():
-    # Open Quiz
-    return render_template('quiz.html')
+    if request.method == "GET":
+        # Open Quiz
+        return render_template('name.html')
+    else:
+        name = request.form.get('name')
+        hairtype = request.form.get('hairtype')
+
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("INSERT INTO experts (name, curl) VALUES (?, ?)",
+                    (name, hairtype)
+                    )
+        conn.commit()
+        conn.close()
+
+        return redirect('/results')
+
+
+@app.route('/results')
+def results():
+    return render_template('results.html')

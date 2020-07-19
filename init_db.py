@@ -8,12 +8,12 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO experts (name, email) VALUES (?, ?)",
-            ('First Person', 'first@example.com')
+cur.execute("INSERT INTO experts (name, curl) VALUES (?, ?)",
+            ('First Person', '5a')
             )
 
-cur.execute("INSERT INTO experts (name, email) VALUES (?, ?)",
-            ('Second Person', 'second@example.com')
+cur.execute("INSERT INTO experts (name, curl) VALUES (?, ?)",
+            ('Second Person', '1b')
             )
 
 connection.commit()

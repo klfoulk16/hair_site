@@ -6,40 +6,78 @@
 
 {% block main %}
 
+<div class='explanation'>
+    <p>To start, I need to know your hair type. Hair type has several different dimensions, including curl pattern, length, density, porosity, and moisture level. </p>
+</div>
 <div class='content-box'>
     <div class='inner-box'>
-        <h3>How do you currently wash your hair?</h3>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="diy" value="diy">
-            <label class="form-check-label" for="exampleRadios1">
-                I make my own.
-            </label>
+        <div class="curlpattern">
+            <h3>What is your curl pattern?</h3>
+            <p>If you're not sure, read the descriptions on <a href ='https://noshampoo.blog/2020/04/17/guide-to-determining-hair-type/'>this site.</a></p>
+            <form name="curl" action="" method="post" onsubmit=''>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="1a" value="1a">
+                    <label class="form-check-label" for="exampleRadios1">
+                        1a: Straight (Fine/Thin)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="1b" value="1b">
+                    <label class="form-check-label" for="exampleRadios2">
+                        1b: Straight (Medium)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="1c" value="1c">
+                    <label class="form-check-label" for="exampleRadios2">
+                        1c: Straight (Coarse)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="2a" value="2a">
+                    <label class="form-check-label" for="exampleRadios2">
+                        2a: Wavy (Fine/Thin)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="2b" value="2b">
+                    <label class="form-check-label" for="exampleRadios2">
+                        2b: Wavy (Medium)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="2c" value="2c">
+                    <label class="form-check-label" for="exampleRadios2">
+                        2c: Wavy (Coarse)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="3a" value="3z">
+                    <label class="form-check-label" for="exampleRadios2">
+                        3z: Curly (Loose)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="3b" value="3b">
+                    <label class="form-check-label" for="exampleRadios2">
+                        3b: Curly (Tight)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="4a" value="4a">
+                    <label class="form-check-label" for="exampleRadios2">
+                        4a: Kinky (Soft)
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="curlpattern" id="4b" value="4b">
+                    <label class="form-check-label" for="exampleRadios2">
+                        4b: Kinky (Wiry)
+                    </label>
+                </div>
+                <button type="submit" class="btn-next btn" id='current-routine-btn'>Next</button>
+            </form>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="natural-store" value="natural-store">
-            <label class="form-check-label" for="exampleRadios2">
-                I buy natural products from a store.
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="synthetic-store" value="synthetic-store">
-            <label class="form-check-label" for="exampleRadios3">
-                I use synthetic products from a store.
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="water" value="water">
-            <label class="form-check-label" for="exampleRadios3">
-                I use water.
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="nothing" value="nothing">
-            <label class="form-check-label" for="exampleRadios3">
-                I don't wash my hair at all.
-            </label>
-        </div>
-        <button type="submit" class="btn-next btn" id='current-routine-btn'>Next</button>
     </div>
 </div>
 
