@@ -78,4 +78,5 @@ def quiz():
 
 @ app.route('/results')
 def results():
-    return render_template('results.html')
+    user = query_db('select count(curl) from experts where curl = ?', ['1b'], one=True)
+    return render_template('results.html', count=user[0])
