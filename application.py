@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, g
 import sqlite3
 
 # Configure application
@@ -7,13 +7,37 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+
 # Configure Database Connection
+def get_db():
+    db = sqlite3.connect('database.db')
+    # makes sure queries are returned as dictionaries
+    db.row_factory = sqlite3.Row
+    return db
 
 
-def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+# combines getting the cursor, executing and fetching the results
+def query_db(query, args=(), one=False):
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[0] if rv else None) if one else rv
+
+
+# insertion query
+def insert_db(query, args):
+    db = get_db()
+    cur = db.cursor()
+    cur.execute(query, args)
+    db.commit()
+    db.close()
+
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
 
 
 # Ensure responses aren't cached
@@ -27,9 +51,7 @@ def after_request(response):
 
 @app.route('/')
 def index():
-    conn = get_db_connection()
-    users = conn.execute('SELECT * FROM experts').fetchall()
-    conn.close()
+    users = query_db('SELECT * FROM experts')
     return render_template('index.html', users=users)
 
 
@@ -48,17 +70,12 @@ def quiz():
         name = request.form.get('name')
         hairtype = request.form.get('hairtype')
 
-        conn = get_db_connection()
-        cur = conn.cursor()
-        cur.execute("INSERT INTO experts (name, curl) VALUES (?, ?)",
-                    (name, hairtype)
-                    )
-        conn.commit()
-        conn.close()
+        insert_db("""INSERT INTO experts (name, curl)
+         VALUES (?, ?)""", (name, hairtype))
 
         return redirect('/results')
 
 
-@app.route('/results')
+@ app.route('/results')
 def results():
     return render_template('results.html')
