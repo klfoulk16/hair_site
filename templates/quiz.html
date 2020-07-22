@@ -1,85 +1,230 @@
 {% extends "layout.html" %}
 
 {% block title %}
-   Quiz
+Name
 {% endblock %}
 
 {% block main %}
 
-<div class='explanation'>
-    <p>To start, I need to know your hair type. Hair type has several different dimensions, including curl pattern, length, density, porosity, and moisture level. </p>
-</div>
-<div class='content-box'>
-    <div class='inner-box'>
-        <div class="curlpattern">
-            <h3>What is your curl pattern?</h3>
-            <p>If you're not sure, read the descriptions on <a href ='https://noshampoo.blog/2020/04/17/guide-to-determining-hair-type/'>this site.</a></p>
-            <form name="curl" action="" method="post" onsubmit=''>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="1a" value="1a">
-                    <label class="form-check-label" for="exampleRadios1">
-                        1a: Straight (Fine/Thin)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="1b" value="1b">
-                    <label class="form-check-label" for="exampleRadios2">
-                        1b: Straight (Medium)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="1c" value="1c">
-                    <label class="form-check-label" for="exampleRadios2">
-                        1c: Straight (Coarse)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="2a" value="2a">
-                    <label class="form-check-label" for="exampleRadios2">
-                        2a: Wavy (Fine/Thin)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="2b" value="2b">
-                    <label class="form-check-label" for="exampleRadios2">
-                        2b: Wavy (Medium)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="2c" value="2c">
-                    <label class="form-check-label" for="exampleRadios2">
-                        2c: Wavy (Coarse)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="3a" value="3z">
-                    <label class="form-check-label" for="exampleRadios2">
-                        3z: Curly (Loose)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="3b" value="3b">
-                    <label class="form-check-label" for="exampleRadios2">
-                        3b: Curly (Tight)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="4a" value="4a">
-                    <label class="form-check-label" for="exampleRadios2">
-                        4a: Kinky (Soft)
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="curlpattern" id="4b" value="4b">
-                    <label class="form-check-label" for="exampleRadios2">
-                        4b: Kinky (Wiry)
-                    </label>
-                </div>
-                <button type="submit" class="btn-next btn" id='current-routine-btn'>Next</button>
-            </form>
+<h1>The Quiz</h1>
+
+<p>Before I can give you personalized recomendations, first I need to know a little bit about your hair. This may seem like a lot of questions, but everyone's hair is so unique that it's necessary.<p>
+
+<form action="/quiz" method="post">
+    <div class="form-group">
+        <input autocomplete="off" autofocus class="form-control" name="name" placeholder="Name" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="email" placeholder="Email" type="text">
+    </div>
+
+    <div class="form-group">
+        <h3>What is your curl pattern?</h3>
+        <p>If you're not sure, read the descriptions on <a href ='https://noshampoo.blog/2020/04/17/guide-to-determining-hair-type/'>this site.</a></p>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="1a" value="1a">
+            <label class="form-check-label" for="exampleRadios1">
+                1a: Straight (Fine/Thin)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="1b" value="1b">
+            <label class="form-check-label" for="exampleRadios2">
+                1b: Straight (Medium)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="1c" value="1c">
+            <label class="form-check-label" for="exampleRadios2">
+                1c: Straight (Coarse)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="2a" value="2a">
+            <label class="form-check-label" for="exampleRadios2">
+                2a: Wavy (Fine/Thin)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="2b" value="2b">
+            <label class="form-check-label" for="exampleRadios2">
+                2b: Wavy (Medium)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="2c" value="2c">
+            <label class="form-check-label" for="exampleRadios2">
+                2c: Wavy (Coarse)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="3a" value="3z">
+            <label class="form-check-label" for="exampleRadios2">
+                3z: Curly (Loose)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="3b" value="3b">
+            <label class="form-check-label" for="exampleRadios2">
+                3b: Curly (Tight)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="4a" value="4a">
+            <label class="form-check-label" for="exampleRadios2">
+                4a: Kinky (Soft)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="curlpattern" id="4b" value="4b">
+            <label class="form-check-label" for="exampleRadios2">
+                4b: Kinky (Wiry)
+            </label>
         </div>
     </div>
-</div>
 
+    <div class="form-group">
+        <h3>What is your hair length?</h3>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="length" id="long" value="long">
+            <label class="form-check-label" for="exampleRadios2">
+                Long
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="length" id="medium" value="medium">
+            <label class="form-check-label" for="exampleRadios2">
+                Medium
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="length" id="short" value="short">
+            <label class="form-check-label" for="exampleRadios2">
+                Short
+            </label>
+        </div>
 
-{% endblock %}
+        <div class="form-group">
+            <h3>What is your hair density?</h3>
+            <p>If you're not sure, read the descriptions on <a href ='https://www.naturallycurly.com/curlreading/wavy-hair-type-2/3-ways-to-figure-out-your-hair-density-once-and-for-all/'>this site.</a></p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="density" id="low" value="low">
+                <label class="form-check-label" for="exampleRadios2">
+                    Low
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="density" id="medium" value="medium">
+                <label class="form-check-label" for="exampleRadios2">
+                    Medium
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="density" id="high" value="high">
+                <label class="form-check-label" for="exampleRadios2">
+                    High
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>What is your hair porosity?</h3>
+            <p>If you're not sure, use the methods described on <a href ='https://www.naturallycurly.com/texture-typing/hair-porosity#:~:text=Determining%20Hair%20Porosity&text=The%20Float%20Test%3A%20Take%20a,sinks%2C%20you%20have%20high%20porosity.'>this site</a> to find out.</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="porosity" id="low" value="low">
+                <label class="form-check-label" for="exampleRadios2">
+                    Low
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="porosity" id="medium" value="medium">
+                <label class="form-check-label" for="exampleRadios2">
+                    Medium
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="porosity" id="high" value="high">
+                <label class="form-check-label" for="exampleRadios2">
+                    High
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>Is your hair usually oily or dry?</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="oily" id="oily" value="oily">
+                <label class="form-check-label" for="exampleRadios2">
+                    Oily
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="oily" id="dry" value="dry">
+                <label class="form-check-label" for="exampleRadios2">
+                    Dry
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="oily" id="neither" value="neither">
+                <label class="form-check-label" for="exampleRadios2">
+                    Neither
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>Is your hair colored?</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="colored" id="y" value="n">
+                <label class="form-check-label" for="exampleRadios2">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="colored" id="n" value="n">
+                <label class="form-check-label" for="exampleRadios2">
+                    No
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>Is your hair permed?</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="permed" id="y" value="n">
+                <label class="form-check-label" for="exampleRadios2">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="permed" id="n" value="n">
+                <label class="form-check-label" for="exampleRadios2">
+                    No
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h3>Is your hair keratin treated?</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="keratin" id="y" value="n">
+                <label class="form-check-label" for="exampleRadios2">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="keratin" id="n" value="n">
+                <label class="form-check-label" for="exampleRadios2">
+                    No
+                </label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="Method"><h3>How do you currently wash your hair?</h3></label>
+            <textarea class="form-control" name="washMethod" id="washMethod" rows="3" value="washMethod"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+
+    {% endblock %}

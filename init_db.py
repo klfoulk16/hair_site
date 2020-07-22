@@ -8,13 +8,8 @@ with open('schema.sql') as f:
 
 cur = connection.cursor()
 
-cur.execute("INSERT INTO experts (name, curl) VALUES (?, ?)",
-            ('First Person', '5a')
-            )
-
-cur.execute("INSERT INTO experts (name, curl) VALUES (?, ?)",
-            ('Second Person', '1b')
-            )
+cur.execute("INSERT INTO experts (name, email, curl, length, density, porosity, oily, colored, permed, keratin, washMethod) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            ('Kelly', 'klf16@my.fsu.edu', '1a', 'long', "high", "high", "oily", "n", "n", "n", "What's going on here? I guess this is my washing method. Fun stuff."))
 
 connection.commit()
 connection.close()

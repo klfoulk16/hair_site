@@ -12,14 +12,16 @@
         <hr>
         <p> Fill in the form below and tell me what your hair type is and how you currently wash your hair. Your answers will help the site learn what hair types work best with different washing methods. Every answer helps. If you have any questions or have an idea for a questions I should be asking, please let me know!</p>
         <p>Thanks, Kelly</p>
-        <a class="btn btn-primary btn-lg" href="/name" role="button">Let's Get Started!</a>
+        <a class="btn btn-primary btn-lg" href="/quiz" role="button">Let's Get Started!</a>
     </div>
 </div>
 
 {% for user in users %}
-<ul>
-    <li>{{user['name']}}, {{user['curl']}}</li>
-</ul>
+<p>{{user['name']}}: {{user['email']}}, {{user['curl']}}, {{user['length']}}, {{user['density']}}, {{user['porosity']}}, {{user['oily']}}, {{user['colored']}}, {{user['permed']}}, {{user['keratin']}}</li>
+</p>
+<p>{{user['washMethod']}}</p>
+<br>
+
 {% endfor %}
 
 {% endblock %}

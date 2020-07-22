@@ -61,22 +61,36 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/name', methods=["GET", "POST"])
+@app.route('/quiz', methods=["GET", "POST"])
 def quiz():
     if request.method == "GET":
         # Open Quiz
-        return render_template('name.html')
+        return render_template('quiz.html')
     else:
         name = request.form.get('name')
-        hairtype = request.form.get('hairtype')
+        email = request.form.get('email')
+        curl = request.form.get('curlpattern')
+        length = request.form.get('length')
+        density = request.form.get('density')
+        porosity = request.form.get('porosity')
+        oily = request.form.get('oily')
+        colored = request.form.get('colored')
+        permed = request.form.get('permed')
+        keratin = request.form.get('keratin')
+        washMethod = request.form.get('washMethod')
 
-        insert_db("""INSERT INTO experts (name, curl)
-         VALUES (?, ?)""", (name, hairtype))
+        insert_db("""INSERT INTO experts (name, email, curl,length, density,
+        porosity, oily, colored, permed, keratin, washMethod)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""", (name, email, curl, length, density, porosity, oily, colored, permed, keratin, washMethod))
 
         return redirect('/results')
 
 
 @ app.route('/results')
 def results():
-    user = query_db('select count(curl) from experts where curl = ?', ['1b'], one=True)
-    return render_template('results.html', count=user[0])
+    user = query_db('select * from experts ORDER BY id DESC')
+    user = user[0]
+    methods = query_db('select * from experts where curl = ? and length = ? and density = ? and porosity=? and oily = ? and colored = ? and permed = ? and keratin =?',
+                       (user["curl"], user["length"], user["density"], user["porosity"], user["oily"], user["colored"], user["permed"], user["keratin"]))
+    matches = len(methods)
+    return render_template('results.html', count=matches, methods=methods)

@@ -6,6 +6,20 @@
 
 {% block main %}
 
-<p>There are {{count}} people with your hair type who have taken this quiz.</p>
+<img src="../img/thumbs-up.png">
+
+<p>There are {{count}} people with your exact hair type who have taken this quiz. This is what they recomend:</p>
+
+{% for method in methods %}
+<div class="card">
+  <h5 class="card-header">{{method["name"]}} recomends:</h5>
+  <div class="card-body">
+    <!-- <h5 class="card-title">Special title treatment</h5> -->
+    <p class="card-text">{{method["washMethod"]}}</p>
+    <input type="image" src="../thumbs-down.png" name="dislike" class="submit" id="saveForm">
+  </div>
+</div>
+<br>
+{% endfor %}
 
 {% endblock %}
