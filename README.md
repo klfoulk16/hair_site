@@ -1,2 +1,2 @@
 # hair_site
-Setting up a site using flask, SQLite to help people figure out how to switch to natural haircare. Designing a quiz that will give personalized answers off of user's hair type. Designed originally to be my Intro to CS50 Final Project.
+Setting up a site using flask, SQLite to help people figure out how to switch to natural haircare. Designing a quiz that will give personalized answers off of user's hair type. Currently on pause while I learn more about artificial intelligence.
